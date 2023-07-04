@@ -5,7 +5,7 @@ function PizzaBlock(props) {
   const [activeSize, setActiveSize] = React.useState(0);
   const typeName = ["тонкое", "традиционное"];
   const { title, price, imageUrl, sizes, types } = props;
-   
+
   return (
     <div className="pizza-block">
       <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
@@ -13,19 +13,27 @@ function PizzaBlock(props) {
       <div className="pizza-block__selector">
         <ul>
           {types.map((typeId) => (
-            <li onClick={()=>setActiveType(typeId)} className={activeType === typeId ? "active" : ""}>
+            <li key={typeId}
+              onClick={() => setActiveType(typeId)}
+              className={activeType === typeId ? "active" : ""}
+            >
               {typeName[typeId]}
             </li>
           ))}
         </ul>
         <ul>
           {sizes.map((size, i) => (
-            <li onClick={()=>setActiveSize(i)} className={activeSize === i ? "active" : ""}>{size}</li>
+            <li key={i}
+              onClick={() => setActiveSize(i)}
+              className={activeSize === i ? "active" : ""}
+            >
+              {size}
+            </li>
           ))}
         </ul>
       </div>
       <div className="pizza-block__bottom">
-        <div className="pizza-block__price">{price}</div>
+        <div className="pizza-block__price">{price} сом</div>
         <button className="button button--outline button--add">
           <svg
             width={12}
